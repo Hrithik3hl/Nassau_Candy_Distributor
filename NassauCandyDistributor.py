@@ -16,6 +16,7 @@ st.set_page_config(
 st.title("📊 Nassau Candy: Supply Chain Performance Dashboard")
 st.markdown("This dashboard monitors and analyzes systemic fulfillment latencies across distribution lanes.")
 
+
 # -------------------------------------------------------------
 # 2. Optimized Data Loading (Using Pickle)
 # -------------------------------------------------------------
@@ -24,10 +25,11 @@ def load_pickle_data():
     data = pd.read_pickle(r"D:\Jupyter_notebooks\Unified Mentor Projects\Nassau Candy Distributor Analysis\clean_shipments.pkl")
     return data
 
+
 data = load_pickle_data()
 
 # -------------------------------------------------------------
-# 3. User Capabilities: Interative Sidebar Filters
+# 3. User Capabilities: Interactive Sidebar Filters
 # -------------------------------------------------------------
 st.sidebar.header("🎛️ Global Controls")
 
@@ -76,11 +78,11 @@ with col1:
 with col2:
     st.metric(label = 'Average Lead Time', value = f"{data_filtered['Shipping_Lead_Time'].mean():.1f} Days")
 with col3:
-    st.metric(label = 'Anamolies Found (> Threshold)', value = f"{len(data_filtered[data_filtered['Shipping_Lead_Time'] > threshold_days]):,}")
+    st.metric(label = 'Anomalies Found (> Threshold)', value = f"{len(data_filtered[data_filtered['Shipping_Lead_Time'] > threshold_days]):,}")
 
 st.subheader("🏆 Route Performance Leaderboard")
 
-# Aggregrate metrics dynamically using the filtered data
+# Aggregate metrics dynamically using the filtered data
 state_route_summary = data_filtered.groupby('Route_State/Province').agg(
                       Total_Shipments = ('Shipping_Lead_Time', 'count'),
                       Avg_Lead_Time = ('Shipping_Lead_Time', 'mean'),
@@ -109,14 +111,14 @@ st.dataframe(
     state_route_summary[['Route_State/Province', 'Route_Efficiency_Score', 'Avg_Lead_Time', 'Total_Shipments']],
     use_container_width = True,
     column_config = {
-        'Route_State' : 'Shipping Lane (Factory ➔ State/Province)',
+        'Route_State': 'Shipping Lane (Factory ➔ State/Province)',
         # 'Route_Efficiency_Score' : st.column_config.NumberColumn('Efficiency Score (0-100)', format = '%.2f'),
-        'Route_Efficiency_Score' : st.column_config.ProgressColumn('Efficiency Score (0-100)',
+        'Route_Efficiency_Score': st.column_config.ProgressColumn('Efficiency Score (0-100)',
             help = '100 represent maximum network speed, 0 represents severe delay.',
             format = '%.1f', min_value = 0.0, max_value = 100.0),
-        'Avg_Lead_Time' : st.column_config.NumberColumn('Avg Duration (Days)', format = '%.1f'),
+        'Avg_Lead_Time': st.column_config.NumberColumn('Avg Duration (Days)', format = '%.1f'),
         # 'Lead_Time_Variability' : st.column_config.NumberColumn('Variability (Std)', format = '%.1f'),
-        'Total_Shipments' : st.column_config.NumberColumn('Volumne (Orders)', format = '%d')
+        'Total_Shipments': st.column_config.NumberColumn('Volume (Orders)', format = '%d')
     }
 )
 
@@ -183,13 +185,13 @@ with map_col:
                         color = 'State_Efficiency',         # Color scale tied to our calculated efficiency
                         scope = 'usa',                      # Zooms the map view specifically into the USA
                         color_continuous_scale = 'RdYlGn',  # Red (Inefficient/Bottleneck) to Green (Highly Efficient)
-                        labels = {'State_Efficiency' : 'Efficiency Score', 'Avg_Lead_Time' : 'Avg Lead Time (Days)'},
-                        hover_data = {'State_Code' : False,
-                                      'State_Name' : True,  # Show the nice full name on hover!
-                                      'Avg_Lead_Time' : ':.1f',
-                                      'Total_Orders' : ':,',
-                                      'State_Efficiency' : ':.2f'}
-    )
+                        labels = {'State_Efficiency': 'Efficiency Score', 'Avg_Lead_Time': 'Avg Lead Time (Days)'},
+                        hover_data = {'State_Code': False,
+                                      'State_Name': True,  # Show the nice full name on hover!
+                                      'Avg_Lead_Time': ':.1f',
+                                      'Total_Orders': ':,',
+                                      'State_Efficiency': ':.2f'}
+                        )
 
     fig.update_layout(
         title_text = 'US Regional Shipping Efficiency Heatmap',
@@ -235,8 +237,8 @@ with chart_col:
                       color = 'Avg_Lead_Time',
                       color_continuous_scale = 'Viridis',
                       text_auto = '.1f',   # Automatically displays the average days on top of the bars
-                      labels = {'Ship Mode' : 'Shipping Methods',
-                                'Avg_Lead_Time' : 'Average Lead Time (Days)'},
+                      labels = {'Ship Mode': 'Shipping Methods',
+                                'Avg_Lead_Time': 'Average Lead Time (Days)'},
                       title = 'Average Lead Time by Shipping Method'
                       )
 
@@ -251,7 +253,7 @@ with chart_col:
 
 with metrics_col:
     st.subheader('📋 Channel Breakdown')
-    st.markdown('Detailed stability and volumne metrics for each mode:')
+    st.markdown('Detailed stability and volume metrics for each mode:')
 
     # Dynamically generate styled cards for each shipping method present in the filtered data
     for idx, row in ship_mode_summary.iterrows():
@@ -293,16 +295,16 @@ else:
     with d_col2:
         st.metric('Mean Lead Time: ', f"{data_drill['Shipping_Lead_Time'].mean():.1f} Days")
     with d_col3:
-        st.metric('Maximum Lantency: ', f"{data_drill['Shipping_Lead_Time'].max()} Days")
+        st.metric('Maximum Latency: ', f"{data_drill['Shipping_Lead_Time'].max()} Days")
 
     # Build a Plotly histogram to show the distribution of transit timelines
     fig_hist = px.histogram(data_drill,
-                           x = 'Shipping_Lead_Time',
-                           nbins = 15,
-                           title = f"Fulfillment Latency Spread: {selected_drill_state}",
-                           labels = {'Shipping_lead_Time' : 'Lead Time (Days)', 'count' : 'Number of Shipments'},
-                           color_discrete_sequence = ['#2ca02c']    # Clean operational green color scheme
-                           )
+                            x = 'Shipping_Lead_Time',
+                            nbins = 15,
+                            title = f"Fulfillment Latency Spread: {selected_drill_state}",
+                            labels = {'Shipping_lead_Time': 'Lead Time (Days)', 'count': 'Number of Shipments'},
+                            color_discrete_sequence = ['#2ca02c']    # Clean operational green color scheme
+                            )
 
     fig_hist.update_layout(xaxis_title = 'Fulfillment Windows (Days)',
                            yaxis_title = 'Volume of Shipments',
@@ -322,7 +324,7 @@ else:
     # Sort by the most recent order dates for logistical relevance
     data_timeline = data_drill[available_cols].sort_values(by = 'Order Date', ascending = False).reset_index(drop = True)
 
-    # Convert datetimes to clean readable strings for the data table UI
+    # Convert datetime to clean readable strings for the data table UI
     if 'Order Date' in data_timeline.columns:
         data_timeline['Order Date'] = data_timeline['Order Date'].dt.strftime('%Y-%m-%d')
     if 'Ship Date' in data_timeline.columns:
