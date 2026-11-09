@@ -4,7 +4,7 @@
 
 Data Science Intern (March 2026 – August 2026) | Unified Mentor Private Limited 
 
-GitHub: | LinkedIn: 
+GitHub: https://github.com/Hrithik3hl/Nassau_Candy_Distributor | LinkedIn: www.linkedin.com/in/hrithik-lokhande
 
 ## **Abstract** 
 
