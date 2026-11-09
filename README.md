@@ -41,5 +41,5 @@ This repository contains a comprehensive supply chain analytics project evaluati
 
 ### 1. Clone the Repository
 ```bash
-git clone [https://github.com/YOUR_USERNAME/national-freight-logistics-project.git](https://github.com/YOUR_USERNAME/national-freight-logistics-project.git)
-cd national-freight-logistics-project
+git clone [https://github.com/Hrithik3hl/Nassau_Candy_Distributor.git](https://github.com/Hrithik3hl/Nassau_Candy_Distributor.git)
+cd Nassau_Candy_Distributor
