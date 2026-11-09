@@ -88,7 +88,7 @@ The exploratory data analysis evaluates national distribution performance across
 ### **5.1 Multi-Modal Lead-Time Distribution** 
 
 
-![Figure 1: Lead Time Distribution and Tri-Modal Clusters](Figures/Figure1_LEadTime_Distribution.png)
+![Figure 1: Lead Time Distribution and Tri-Modal Clusters](Figures/Figure1_LeadTime_Distribution.png)
 Figure 1: Distribution of National Freight Transit Lead Times Showing Tri-Modal Latency Clusters. 
 
 As illustrated in **Figure 1** , the national fulfillment latency distribution exhibits strong rightskewness and distinct **tri-modal clustering** . Rather than displaying a uniform bell-curve distribution around the network mean (1287.7 days), order lead times split into three isolated operational tiers: 
@@ -130,7 +130,7 @@ The breakdown of regional performance tiers demonstrates that fulfillment effici
 ### **5.3 Shipping Mode Speed vs. Reliability Trade-Offs** 
 
 
-![Figure 3: Ship Mode Dispersion and Standard Deviation](Figures/Figure3_ShipMode_Dispesion.png)
+![Figure 3: Ship Mode Dispersion and Standard Deviation](Figures/Figure3_ShipMode_Dispersion.png)
 Figure 3: Lead-Time Dispersion (σ) and Median Durations Across Fulfillment Channels. 
 
 A cross-channel evaluation ( **Figure 3** ) demonstrates the operational trade-off between baseline delivery speed and channel stability across fulfillment modes: 
