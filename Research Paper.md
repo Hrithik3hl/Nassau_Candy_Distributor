@@ -1,10 +1,11 @@
 # **Factory-to-Customer Shipping Route Efficiency Analysis for Nassau Candy Distributor** 
 
-**Hrithik Lokhande** 
+**Author:** Hrithik Lokhande 
 
 Data Science Intern (March 2026 – August 2026) | Unified Mentor Private Limited 
 
-GitHub: https://github.com/Hrithik3hl/Nassau_Candy_Distributor | LinkedIn: www.linkedin.com/in/hrithik-lokhande
+[![GitHub] (https://github.com/Hrithik3hl/Nassau_Candy_Distributor) 
+[![LinkedIn] (www.linkedin.com/in/hrithik-lokhande)
 
 ## **Abstract** 
 
