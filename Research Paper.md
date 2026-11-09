@@ -104,7 +104,7 @@ As illustrated in **Figure 1** , the national fulfillment latency distribution e
 ### **5.2 Spatial Bottlenecks & Regional Disparities** 
 
 
-![Figure 2: Top 10 vs Bottom 10 State Efficiency Index](Figures/Figure2_State_Efficiency_Top_Botom.png)
+![Figure 2: Top 10 vs Bottom 10 State Efficiency Index](Figures/Figure2_State_Efficiency_Top_Bottom.png)
 Figure 2: Route Efficiency Score (Er) – Top 10 vs. Bottom 10 Destination States. 
 
 Aggregating performance by destination state via the normalized **Route Efficiency Score (** _Er_ **)** uncovers substantial geographic performance gaps ( **Figure 2** ): 
